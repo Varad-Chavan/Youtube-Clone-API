@@ -10,7 +10,9 @@ const Feed = () => {
 
   useEffect(()=>{
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data)=>setVideos(data.items));  
+    //console.log(videos)
   },[selectedCategory])
+
   return (
     
     <Stack sx={{flexDirection:{sx:'column',md:'row'}}}>
@@ -20,12 +22,12 @@ const Feed = () => {
         Copyright 2024 YT Clone
       </Typography>
       </Box>
-      <Box p={2} sx={{overflowY:'auto',height:'90vh',flex:2}}>
+      <Box p={2} sx={{overflow:'auto',height:'90vh',flex:2}}>
         <Typography variant='h4' fontWeight='bold' mb={2} sx={{color:'white'}}>
         {selectedCategory} <span style={{color:'#f31503'}}>Videos</span>
         </Typography>
-      </Box>
       <Videos videos={videos}/>
+      </Box>
     </Stack>
   )
 }

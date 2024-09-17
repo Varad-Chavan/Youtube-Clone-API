@@ -4,14 +4,15 @@ import {logo} from '../utils/constant';
 import SearchBar from './SearchBar';
 
 const Navbar = () => {
+  
   return(
     <Stack 
-      direction="row" 
-      alignItems="center"
+      direction='row' 
+      alignItems='center'
       p={2}
-      sx={{blackground:'#000', position:"sticky", top:0,justifyContent:"space-between"}}>
-        <Link to='/' style={{display:"flex", alignItems:"center"}}>
-            <img src={logo} alt="logo" height={45}/> 
+      sx={{backgroundColor:'#000', top:'0' ,justifyContent:'space-between',position: 'sticky' }}>
+        <Link to='/' style={{display:'flex', alignItems:'center'}}>
+            <img src={logo} alt='logo' height={45}/> 
         </Link>
         <SearchBar/>
     </Stack>

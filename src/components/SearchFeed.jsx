@@ -1,10 +1,25 @@
 import React from 'react'
+import { useState,useEffect } from 'react'
+import {Box,Typography} from '@mui/material'
+import{Videos} from './index'
+import { fetchFromAPI } from '../utils/fetchFromAPI'
+import { useParams } from 'react-router-dom'
 
 const SearchFeed = () => {
+  const[videos,setVideos]=useState([])
+  const {searchTerm}= useParams();
+
+  useEffect(()=>{
+    fetchFromAPI(`search?part=snippet&q=${searchTerm}`).then((data)=>setVideos(data.items));  
+  },[searchTerm])
+
   return (
-    <div>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam aliquam cum repellendus corporis atque! Tenetur eaque eveniet amet a? Deleniti consectetur earum veritatis totam! Voluptatem sunt odio tempore officiis optio!
-    </div>
+    <Box p={2} sx={{overflow:'auto',height:'90vh',flex:2}}>
+      <Typography variant='h4' fontWeight='bold' mb={2} sx={{color:'white'}}>
+      Search Results for <span style={{color:'#f31503'}}>{searchTerm} </span>Videos
+      </Typography>
+    <Videos videos={videos}/>
+    </Box>
   )
 }
 
